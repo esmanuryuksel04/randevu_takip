@@ -1,0 +1,40 @@
+{#  Yorum satırı #}
+{# {% mantık/komut satırı %} #}
+{# {{ deger yazdırılır }} #}
+
+{% extends 'base.html' %} {# "Bu sayfa base.html'in çocuğu." -> Dosyanın ilk satırı olmak zorunda #}
+{% block title %}Yaklaşan Randevular{% endblock %}
+{% block content %}
+
+<h1>Yaklaşan Randevular</h1>
+
+<table>
+    <thead>
+       <tr>
+           <th>Tarih ve saat</th>
+           <th>Başlık</th>
+           <th>Kişi</th>
+           <th>Telefon</th>
+           <th>İşlemler</th>
+       </tr>
+    </thead>
+    <tbody>
+       {% for r in randevular %}
+          <tr>
+              <td>{{ r.tarih_saat|date:"d.m.Y H:i" }}</td>
+              <td>{{ r.baslik }}</td>
+              <td>{{ r.kisi_adi }}</td>
+              <td>{{ r.telefon_no|default:"-" }}</td>
+              <td>
+                  <a href="{% url 'randevular:duzenle' r.pk %}">Düzenle</a>
+                  <a href="{% url 'randevular:iptal' r.pk %}">İptal Et</a>
+              </td>
+          </tr>
+      {% empty %}
+          <tr>
+              <td colspan="5">Yaklaşan randevu yok.</td>
+          </tr>
+     {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

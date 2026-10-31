@@ -26,12 +26,12 @@ def randevu_olustur(request):
             messages.success(request, 'Randevu başarıyla oluşturuldu.')
             return redirect('randevular:liste')
 
-        else:
-            form = RandevuForm()
-        return render(request, 'randevular/randevu_form.html', {
-            'form' : form,
-            'sayfa_basligi' : 'Yeni Randevu Oluştur',
-        })
+    else:
+        form = RandevuForm()
+    return render(request, 'randevular/randevu_form.html', {
+        'form' : form,
+        'sayfa_basligi' : 'Yeni Randevu Oluştur',
+    })
 
 def randevu_duzenle(request, pk): #pk, her randevunun unique numarası
     randevu = get_object_or_404(Randevu, pk=pk)
@@ -42,11 +42,11 @@ def randevu_duzenle(request, pk): #pk, her randevunun unique numarası
             messages.success(request, 'Randevu başarıyla güncellendi.')
             return redirect('randevular:liste')
 
-        else:
-            form = RandevuForm(instance=randevu) #GET
-        return render(request,'randevular/raandevu_form.html', {
-            'form' : form,
-            'sayfa_basligi' : 'Randevuyu Düzenle'
+    else:
+        form = RandevuForm(instance=randevu) #GET
+    return render(request,'randevular/randevu_form.html', {
+        'form' : form,
+        'sayfa_basligi' : 'Randevuyu Düzenle'
         })
 
 def randevu_iptal(request, pk):

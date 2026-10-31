@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Randevuyu İptal Et {% endblock %}
+{% block content %}
+
+<h1>Randevuyu İptal Et</h1>
+<p>
+    <strong>{{ randevu.baslik }}</strong> ({{ randevu.kisi_adi }}),
+    {{ randevu.tarih_saat|date:"d.m.Y H.i" }} tarihli randevuyu iptal etmek istediğinize emin misiniz?
+</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Evet, iptal et</button>
+    <a href="{5 url ' randevular:liste' %}">Vazgeç</a>
+</form>
+{% endblock %}

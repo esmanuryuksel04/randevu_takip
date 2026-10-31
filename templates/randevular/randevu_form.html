@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}{{ sayfa_basligi }}{% endblock %}
+{% block content %}
+
+<h1>{{ sayfa_basligi }}</h1>
+
+<form method="post">
+    {% csrf_token %} {# ZORUNLU. Saldırgan başka bir siteden senin adına form gönderemesin diye Django her forma gizli
+                         rastgale bir anahtar koyar ve POST'ta kontrol eder. Yazmazsan gönderince 403 Forbidden hatası alırsın #}
+    {{ form.as_p }}
+    <button type="submit">Kaydet</button>
+    <a href="{% url 'randevular:liste' %}">Vazgeç</a>
+</form>
+{% endblock %}
