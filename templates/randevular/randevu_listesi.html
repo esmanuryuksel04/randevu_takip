@@ -8,7 +8,8 @@
 
 <h1>Yaklaşan Randevular</h1>
 
-<table>
+<div class="tablo-kap">
+  <table>
     <thead>
        <tr>
            <th>Tarih ve saat</th>
@@ -26,15 +27,16 @@
               <td>{{ r.kisi_adi }}</td>
               <td>{{ r.telefon_no|default:"-" }}</td>
               <td>
-                  <a href="{% url 'randevular:duzenle' r.pk %}">Düzenle</a>
-                  <a href="{% url 'randevular:iptal' r.pk %}">İptal Et</a>
+                  <a class="btn btn-ikincil btn-kucuk" href="{% url 'randevular:duzenle' r.pk %}">Düzenle</a>
+                  <a class="btn btn-tehlike btn-kucuk" href="{% url 'randevular:iptal' r.pk %}">İptal Et</a>
               </td>
           </tr>
       {% empty %}
           <tr>
-              <td colspan="5">Yaklaşan randevu yok.</td>
+              <td colspan="5" class="bos">Yaklaşan randevu yok.</td>
           </tr>
      {% endfor %}
     </tbody>
-</table>
+  </table>
+</div>
 {% endblock %}

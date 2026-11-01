@@ -1,0 +1,171 @@
+:root {
+  --ana: blue;
+  --ana-koyu: darkblue;
+  --tehlike: red;
+  --tehlike-koyu: darkred;
+  --yazi: black;
+  --gri: gray;
+  --cizgi: #ddd;
+  --zemin: #f5f5f5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--yazi);
+  background: var(--zemin);
+}
+
+nav {
+  padding: 15px;
+  background: white;
+  border-bottom: 1px solid var(--cizgi);
+}
+
+nav a {
+  margin-right: 15px;
+  color: var(--gri);
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--ana);
+}
+
+main {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.mesajlar {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.mesaj {
+  margin-bottom: 10px;
+  padding: 12px;
+  border: 1px solid var(--cizgi);
+  background: white;
+}
+
+.mesaj.success {
+  color: green;
+  background: #eaffea;
+}
+
+.mesaj.error {
+  color: red;
+  background: #ffeaea;
+}
+
+.tablo-kap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--cizgi);
+}
+
+th {
+  color: var(--gri);
+  background: #eee;
+}
+
+td.bos {
+  padding: 30px;
+  color: var(--gri);
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 0;
+  background: #ddd;
+  color: #222;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-kucuk {
+  padding: 5px 9px;
+  font-size: 14px;
+}
+
+.btn-ana {
+  color: white;
+  background: var(--ana);
+}
+
+.btn-ana:hover {
+  background: var(--ana-koyu);
+}
+
+.btn-tehlike {
+  color: white;
+  background: var(--tehlike);
+}
+
+.btn-tehlike:hover {
+  background: var(--tehlike-koyu);
+}
+
+.btn-ikincil {
+  background: #ddd;
+}
+
+.form-kutu {
+  max-width: 560px;
+  padding: 20px;
+  background: white;
+  border: 1px solid var(--cizgi);
+}
+
+.form-kutu p {
+  margin-bottom: 15px;
+}
+
+.form-kutu label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-kutu input, .form-kutu textarea, .form-kutu select {
+  width: 100%;
+  padding:9px;
+  border: 1px solid #ccc;
+}
+
+.form-kutu input:focus,
+.form-kutu textarea:focus,
+.form-kutu select:focus {
+  outline: 1px solid var(--ana);
+}
+
+.errorlist {
+  padding: 0;
+  color: red;
+  list-style: none;
+}
+
+.butonlar {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}

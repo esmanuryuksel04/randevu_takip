@@ -11,6 +11,6 @@
 <form method="post">
     {% csrf_token %}
     <button type="submit">Evet, iptal et</button>
-    <a href="{5 url ' randevular:liste' %}">Vazgeç</a>
+    <a href="{% url ' randevular:liste' %}">Vazgeç</a>
 </form>
 {% endblock %}
