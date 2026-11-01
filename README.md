@@ -1,12 +1,13 @@
 # Randevu Takip Uygulaması
-Django ile geliştirilmiş, randevu oluşturma, düzenleme, iptal etme ve yaklaşan randevuları listeleme işlemlerini yapan bir web uygulamasıdır.
+Django ile geliştirilmiş, doktor randevularını oluşturma, düzenleme, iptal etme ve yaklaşan randevuları listeleme işlemlerini yapan basit bir web uygulaması.
 
 ## Özellikler
 
-- Randevu oluşturma (başlık, kişi adı, telefon, tarih-saat, notlar)
+- Randevu oluşturma (kişi adı, doktor, telefon, tarih-saat, notlar)
 - Randevu düzenleme
 - Randevu iptal etme(kayıt silinmez, durumu "iptal" olur.)
 - Yaklaşan randevuları tarihe göre sıralı listeleme
+- Doktor ve muayene alanı: Doktorlar ayrı bir tabloda tutulur, her randevu bir doktora bağlıdır
 - Geçmiş traihe randevu oluşturmayı engelleyen form doğrulaması
 - İşlem sonrası bildirim mesajları
 
@@ -30,11 +31,12 @@ python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver 
 ```
-
-Tarayıcıda `http://127.0.0.1:8000/` adresini açın.
-Yönetim Paneli içinse `http://127.0.0.1:8000/admin/` adresini açın.
-
 Mac/Linux kullanıcısı iseniz sanal ortamı `source venv/bin/activate` ile aktif ediniz.
+
+## İlk Kullanımı
+1. `http://127.0.0.1:8000/admin/` adresine git ve oluşturduğun yönetici hesabıyla giriş yap
+2. **Doktorlar** bölümünden doktor ekle (ad ve alan, örneğin "Dr. Bade Yüksel" / "Göz Hastalıkları")
+3. `http://127.0.0.1:8000/` adresine dön ve **Yeni Randevu** ile randevu oluştur
 
 ## Proje Yapısı
 
@@ -46,3 +48,10 @@ randevu_takip/
 |- templates/    # HTML şablonları
 |- manage.py
 ```
+
+## Veri Modeli
+
+- **Doktor:** ad, alan
+- **Randevu:** kişi adı, doktor (Doktor'a bağlı), telefon, tarih-saat, notlar, durum (aktif / iptal edildi), oluşturulma tarihi
+
+Bir doktorun birden çok randevusu olabilir. Randevusu olan bir doktor silinemez, geçmiş kayıtlar korunur.
