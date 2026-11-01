@@ -4,7 +4,8 @@
 
 <h1>Randevuyu İptal Et</h1>
 <p>
-    <strong>{{ randevu.baslik }}</strong> ({{ randevu.kisi_adi }}),
+    <strong>{{ randevu.kisi_adi }}</strong> ,
+    {{ randevu.doktor.ad|default: "doktor belirtilmemiş" }} ile
     {{ randevu.tarih_saat|date:"d.m.Y H.i" }} tarihli randevuyu iptal etmek istediğinize emin misiniz?
 </p>
 

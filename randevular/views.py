@@ -9,7 +9,7 @@ from .forms import RandevuForm
 from .models import Randevu
 
 def randevu_listesi(request):
-    randevular = Randevu.objects.filter(
+    randevular = Randevu.objects.select_related('doktor').filter( #select_related SQL'deki JOIN
         durum = Randevu.Durum.AKTIF,
         tarih_saat__gte = timezone.now(), #gte -> greater than equal, tarihi şu andan sonra olanlar
         #diğer operatörler: __lt, __gt, __lte, __contains, __icontains
