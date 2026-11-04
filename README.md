@@ -9,7 +9,8 @@ Django ile geliştirilmiş, doktor randevularını oluşturma, düzenleme, iptal
 - Yaklaşan randevuları tarihe göre sıralı listeleme
 - Doktor ve muayene alanı: Doktorlar ayrı bir tabloda tutulur, her randevu bir doktora bağlıdır
 - Geçmiş traihe randevu oluşturmayı engelleyen form doğrulaması
-- İşlem sonrası bildirim mesajları
+- İşlem sonrası bildirim mesajları 
+- 20 dakikalık randevu dilimleri (09:00-12:00 ve 13:00-17:00, öğle arası hariç)
 - Aynı doktor için aynı tarih ve saatte çakışan randevuyu engelleyen doğrulama
 
 ## Kullanılan Teknolojiler
