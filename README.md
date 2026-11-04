@@ -10,6 +10,7 @@ Django ile geliştirilmiş, doktor randevularını oluşturma, düzenleme, iptal
 - Doktor ve muayene alanı: Doktorlar ayrı bir tabloda tutulur, her randevu bir doktora bağlıdır
 - Geçmiş traihe randevu oluşturmayı engelleyen form doğrulaması
 - İşlem sonrası bildirim mesajları
+- - Aynı doktor için aynı tarih ve saatte çakışan randevuyu engelleyen doğrulama
 
 ## Kullanılan Teknolojiler
 
