@@ -9,5 +9,4 @@ class RandevuAdmin(admin.ModelAdmin):
     list_filter = ('durum', 'doktor') #sağ tarafa duruma göre filtre kutusu ekler
     search_fields = ('kisi_adi',) #üstte arama kutusu çıkarır. eğer köşeli parantezle yaparsan sona virgül gerekmez!
 
-#admin.site.register(Randevu) #modeli admin paneline tanıttık.
-admin.site.register(Doktor)
+admin.site.register(Doktor) #modeli admin paneline tanıttık.

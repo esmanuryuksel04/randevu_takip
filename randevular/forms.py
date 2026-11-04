@@ -17,7 +17,7 @@ class RandevuForm(forms.ModelForm): # .save() ile doğrudan verileri db yazabili
         widgets = {
             'tarih_saat': forms.DateTimeInput(
                 attrs={'type': 'datetime-local'},
-                format='%Y-%m-%dT%H:%M', #type:"datetime_local" kutusu değeri sadece bu şekilde kabul eder
+                format='%Y-%m-%dT%H:%M',
             ),
             'notlar': forms.Textarea(attrs={'rows': 3}),
         }
@@ -31,3 +31,24 @@ class RandevuForm(forms.ModelForm): # .save() ile doğrudan verileri db yazabili
         if tarih < timezone.now():
             raise forms.ValidationError('Geçmiş bir tarihe randevu oluşturamazsınız!')
         return tarih
+
+    def clean(self):
+        cleaned_data = super().clean()
+        tarih = cleaned_data.get('tarih_saat')
+        doktor = cleaned_data.get('doktor')
+
+        if tarih and doktor:
+            cakisanlar = Randevu.objects.filter(
+                doktor = doktor,
+                tarih_saat = tarih,
+                durum = Randevu.Durum.AKTIF,
+            )
+            if self.instance.pk:
+                cakisanlar = cakisanlar.exclude(pk = self.instance.pk)
+
+            if cakisanlar.exists():
+                self.add_error(
+                    'tarih_saat',
+                    f'{doktor.ad} için bu tarih ve saatte aktif bir randevu vardır. Başka saat dilimi seçiniz!'
+                )
+        return cleaned_data

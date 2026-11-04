@@ -5,8 +5,7 @@
 <h1>{{ sayfa_basligi }}</h1>
 
 <form method="post">
-    {% csrf_token %} {# ZORUNLU. Saldırgan başka bir siteden senin adına form gönderemesin diye Django her forma gizli
-                         rastgale bir anahtar koyar ve POST'ta kontrol eder. Yazmazsan gönderince 403 Forbidden hatası alırsın #}
+    {% csrf_token %}
     {{ form.as_p }}
     <button class="btn btn-ana btn-kucuk" type="submit">Kaydet</button>
     <a class="btn btn-ikincil btn-kucuk" href="{% url 'randevular:liste' %}">Vazgeç</a>
