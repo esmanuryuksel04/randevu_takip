@@ -56,7 +56,9 @@ class RandevuForm(forms.ModelForm):
         tarih_saat = timezone.make_aware(datetime.combine(tarih, saat))
         self.instance.tarih_saat = tarih_saat
 
-        if tarih_saat < timezone.now():
+        if tarih.weekday() >= 5:
+            self.add_error('tarih', 'Hafta sonu randevu alınamaz!')
+        elif tarih_saat < timezone.now():
             self.add_error('tarih', 'Geçmiş bir tarihe randevu alamazsınız.')
         elif doktor and Randevu.objects.filter(
             doktor = doktor,
