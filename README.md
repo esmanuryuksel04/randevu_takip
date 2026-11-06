@@ -1,17 +1,20 @@
 # Randevu Takip Uygulaması
+
 Django ile geliştirilmiş, doktor randevularını oluşturma, düzenleme, iptal etme ve yaklaşan randevuları listeleme işlemlerini yapan basit bir web uygulaması.
 
 ## Özellikler
 
 - Randevu oluşturma (kişi adı, doktor, telefon, tarih-saat, notlar)
 - Randevu düzenleme
-- Randevu iptal etme(kayıt silinmez, durumu "iptal" olur.)
+- Randevu iptal etme (kayıt silinmez, durumu "iptal" olur)
 - Yaklaşan randevuları tarihe göre sıralı listeleme
 - Doktor ve muayene alanı: Doktorlar ayrı bir tabloda tutulur, her randevu bir doktora bağlıdır
-- Geçmiş traihe randevu oluşturmayı engelleyen form doğrulaması
+- Geçmiş tarihe randevu oluşturmayı engelleyen form doğrulaması
 - İşlem sonrası bildirim mesajları 
 - 20 dakikalık randevu dilimleri (09:00-12:00 ve 13:00-17:00, öğle arası hariç)
 - Aynı doktor için aynı tarih ve saatte çakışan randevuyu engelleyen doğrulama
+- Geçmiş randevular ve iptal edilen randevular için ayrı sayfalar
+- Hafta sonu randevu alınmasını engelleyen doğrulama
 
 ## Kullanılan Teknolojiler
 
@@ -19,11 +22,11 @@ Django ile geliştirilmiş, doktor randevularını oluşturma, düzenleme, iptal
 - Django 5.2
 - SQLite
 - HTML, CSS, Django Template
-- Git / Github
+- Git / GitHub
 
 ## Kurulum
 
-``` bash
+```bash
 git clone https://github.com/esmanuryuksel04/randevu_takip
 cd randevu_takip
 python -m venv venv
@@ -31,11 +34,11 @@ venv\Scripts\activate
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py createsuperuser
-python manage.py runserver 
+python manage.py runserver
 ```
-Mac/Linux kullanıcısı iseniz sanal ortamı `source venv/bin/activate` ile aktif ediniz.
+Mac/Linux kullanıyorsanız sanal ortamı `source venv/bin/activate` ile aktif ediniz.
 
-## İlk Kullanımı
+## İlk Kullanım
 1. `http://127.0.0.1:8000/admin/` adresine git ve oluşturduğun yönetici hesabıyla giriş yap
 2. **Doktorlar** bölümünden doktor ekle (ad ve alan, örneğin "Dr. Bade Yüksel" / "Göz Hastalıkları")
 3. `http://127.0.0.1:8000/` adresine dön ve **Yeni Randevu** ile randevu oluştur
@@ -46,7 +49,7 @@ Mac/Linux kullanıcısı iseniz sanal ortamı `source venv/bin/activate` ile akt
 randevu_takip/
 |- config/       # Proje ayarları ve ana URL yönlendirmesi
 |- randevular/   # Uygulama: model, form, view, url
-|- static/css/   # CSS dosyları
+|- static/css/   # CSS dosyaları
 |- templates/    # HTML şablonları
 |- manage.py
 ```
