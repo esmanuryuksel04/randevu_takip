@@ -12,6 +12,9 @@
             <th>Alan</th>
             <th>Kişi</th>
             <th>Telefon</th>
+            {% if geri_alinabilir %}
+            <th>İşlem</th>
+            {% endif %}
         </tr>
         </thead>
         <tbody>
@@ -22,10 +25,18 @@
                     <td>{{ r.doktor.alan|default:"-" }}</td>
                     <td>{{ r.kisi_adi }}</td>
                     <td>{{ r.telefon_no|default:"-" }}</td>
+                    {% if geri_alinabilir %}
+                    <td>
+                        <form method="post" action="{% url 'randevular:geri_al' r.pk %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-ana btn-kucuk">Geri al</button>
+                        </form>
+                    </td>
+                    {% endif %}
                 </tr>
             {% empty %}
                 <tr>
-                    <td colspan="5" class="bos">Kayıt yok.</td>
+                    <td colspan="{% if geri_alinabilir %}6{% else %}5{% endif %}" class="bos">Kayıt yok.</td>
                 </tr>
             {% endfor %}
         </tbody>

@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 #render: şablonu verilerle birleştirip HTML cevabı üretir, redirect: kullanıcıyı başka bir adrese yönlendirir
 from django.utils import timezone
+from django.views.decorators.http import require_POST
 
 from .forms import RandevuForm
 from .models import Randevu
@@ -76,6 +77,26 @@ def iptal_edilenler(request):
     ).order_by('-tarih_saat')
     return render(request, 'randevular/randevu_arsiv.html', {
         'randevular' : randevular,
-        'sayfa_basligi' : 'İptal Edilen Randevular'
+        'sayfa_basligi' : 'İptal Edilen Randevular',
+        'geri_alinabilir': True,
     })
+
+@require_POST # Bu view'a sadece POST isteğiyle girilebilir, GET isteği gelirse Django otomatik olarak "405 Method Not Allowed" döndürür
+def randevu_geri_al(request, pk):
+    randevu = get_object_or_404(Randevu, pk=pk, durum=Randevu.Durum.IPTAL)
+    if randevu.tarih_saat < timezone.now():
+        messages.error(request, 'Tarihi geçmiş bir randevu geri alınamaz.')
+    elif Randevu.objects.filter(
+        doktor = randevu.doktor,
+        tarih_saat = randevu.tarih_saat,
+        durum = Randevu.Durum.AKTIF,
+    ).exists():
+        messages.error(request, 'Bu doktorun o saatte başka bir randevusu var, geri alınamaz.')
+    else:
+        randevu.durum = Randevu.Durum.AKTIF
+        randevu.save()
+        messages.success(request, 'Randevu geri alındı.')
+        return redirect('randevular:liste')
+    return redirect('randevular:iptal_edilenler')
+
 

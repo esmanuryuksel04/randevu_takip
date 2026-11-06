@@ -10,4 +10,5 @@ urlpatterns = [
     path('iptal-edilenler/', views.iptal_edilenler, name='iptal_edilenler'),
     path('<int:pk>/duzenle/', views.randevu_duzenle, name='duzenle'),
     path('<int:pk>/iptal/', views.randevu_iptal, name='iptal'),
+    path('<int:pk>/geri-al/', views.randevu_geri_al, name='geri_al'),
 ]
