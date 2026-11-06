@@ -52,7 +52,7 @@ class RandevuForm(forms.ModelForm):
         if not (tarih and saat):
             return cleaned_data
 
-        saat = datetime.strptime(saat, '%H:%M').time() # "13.40" yazısını saat nesnesine çevirme
+        saat = datetime.strptime(saat, '%H:%M').time() # "13:40" yazısını saat nesnesine çevirme
         tarih_saat = timezone.make_aware(datetime.combine(tarih, saat))
         self.instance.tarih_saat = tarih_saat
 
