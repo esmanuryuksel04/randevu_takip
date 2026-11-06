@@ -14,6 +14,7 @@ Django ile geliştirilmiş, doktor randevularını oluşturma, düzenleme, iptal
 - 20 dakikalık randevu dilimleri (09:00-12:00 ve 13:00-17:00, öğle arası hariç)
 - Aynı doktor için aynı tarih ve saatte çakışan randevuyu engelleyen doğrulama
 - Geçmiş randevular ve iptal edilen randevular için ayrı sayfalar
+- - İptal edilen randevuyu geri alma (saat başka bir randevuya verildiyse ya da tarih geçtiyse engellenir)
 - Hafta sonu randevu alınmasını engelleyen doğrulama
 
 ## Kullanılan Teknolojiler
