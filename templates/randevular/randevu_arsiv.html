@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}{{ sayfa_basligi }}{% endblock %}
+{% block content %}
+
+<h1>{{ sayfa_basligi }}</h1>
+<div class = "tablo-kap">
+    <table>
+        <thead>
+        <tr>
+            <th>Tarih ve saat</th>
+            <th>Doktor</th>
+            <th>Alan</th>
+            <th>Kişi</th>
+            <th>Telefon</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for r in randevular %}
+                <tr>
+                    <td>{{ r.tarih_saat|date:"d.m.Y H:i" }}</td>
+                    <td>{{ r.doktor.ad|default:"-" }}</td>
+                    <td>{{ r.doktor.alan|default:"-" }}</td>
+                    <td>{{ r.kisi_adi }}</td>
+                    <td>{{ r.telefon_no|default:"-" }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5" class="bos">Kayıt yok.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

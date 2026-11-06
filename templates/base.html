@@ -11,6 +11,8 @@
      <nav>
          <a href="{% url 'randevular:liste' %}">Randevularım</a>
          <a href="{% url 'randevular:olustur' %}">Yeni Randevu</a>
+         <a href="{% url 'randevular:gecmis' %}">Geçmiş</a>
+         <a href="{% url 'randevular:iptal_edilenler' %}">İptal Edilenler</a>
      </nav>
      <main>
          {% if messages %}

@@ -5,13 +5,13 @@
 <h1>Randevuyu İptal Et</h1>
 <p>
     <strong>{{ randevu.kisi_adi }}</strong> ,
-    {{ randevu.doktor.ad|default: "doktor belirtilmemiş" }} ile
+    {{ randevu.doktor.ad|default:"doktor belirtilmemiş" }} ile
     {{ randevu.tarih_saat|date:"d.m.Y H.i" }} tarihli randevuyu iptal etmek istediğinize emin misiniz?
 </p>
 
 <form method="post">
     {% csrf_token %}
     <button type="submit">Evet, iptal et</button>
-    <a href="{% url ' randevular:liste' %}">Vazgeç</a>
+    <a href="{% url 'randevular:liste' %}">Vazgeç</a>
 </form>
 {% endblock %}

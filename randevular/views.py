@@ -60,4 +60,22 @@ def randevu_iptal(request, pk):
         'randevu' : randevu,
     })
 
+def gecmis_randevular(request):
+    randevular = Randevu.objects.select_related('doktor').filter(
+        durum = Randevu.Durum.AKTIF,
+        tarih_saat__lt = timezone.now(),
+    ).order_by('-tarih_saat')
+    return render(request, 'randevular/randevu_arsiv.html', {
+    'randevular' : randevular,
+    'sayfa_basligi' : 'Geçmiş Randevular',
+    })
+
+def iptal_edilenler(request):
+    randevular = Randevu.objects.select_related('doktor').filter(
+        durum = Randevu.Durum.IPTAL,
+    ).order_by('-tarih_saat')
+    return render(request, 'randevular/randevu_arsiv.html', {
+        'randevular' : randevular,
+        'sayfa_basligi' : 'İptal Edilen Randevular'
+    })
 
